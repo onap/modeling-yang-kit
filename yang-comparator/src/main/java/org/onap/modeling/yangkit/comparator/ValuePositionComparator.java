@@ -18,8 +18,8 @@ package org.onap.modeling.yangkit.comparator;
 
 import org.yangcentral.yangkit.model.api.stmt.YangStatement;
 
-public class WhenMustComparator extends CommonYangStatementComparator {
 
+public class ValuePositionComparator extends CommonYangStatementComparator {
     /**
      *
      * @param left       left statement
@@ -30,12 +30,9 @@ public class WhenMustComparator extends CommonYangStatementComparator {
     @Override
     protected CompatibilityInfo defaultCompatibility(YangStatement left, YangStatement right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {
-        if (changeInfo == CompatibilityRule.ChangeInfo.ADDED) {
+        if (changeInfo == CompatibilityRule.ChangeInfo.CHANGED) {
             return new CompatibilityInfo(CompatibilityRule.Compatibility.NBC,
-                    "add a new when/must, it's non-backward-compatible.");
-        } else if (changeInfo == CompatibilityRule.ChangeInfo.CHANGED) {
-            return new CompatibilityInfo(CompatibilityRule.Compatibility.UNKNOWN,
-                    "change a when/must, the compatibility is unknown.");
+                    "change value or position, it's non-backward-compatible.");
         }
         return super.defaultCompatibility(left, right, changeInfo);
     }

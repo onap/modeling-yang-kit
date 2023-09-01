@@ -16,9 +16,10 @@ limitations under the License.
 
 package org.onap.modeling.yangkit.comparator;
 
-import org.yangcentral.yangkit.model.api.stmt.YangStatement;
+import org.yangcentral.yangkit.model.api.stmt.Namespace;
 
-public class WhenMustComparator extends CommonYangStatementComparator {
+
+public class NamespaceComparator extends CommonYangStatementComparator<Namespace> {
 
     /**
      *
@@ -28,14 +29,10 @@ public class WhenMustComparator extends CommonYangStatementComparator {
      * @return
      */
     @Override
-    protected CompatibilityInfo defaultCompatibility(YangStatement left, YangStatement right,
+    protected CompatibilityInfo defaultCompatibility(Namespace left, Namespace right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {
-        if (changeInfo == CompatibilityRule.ChangeInfo.ADDED) {
-            return new CompatibilityInfo(CompatibilityRule.Compatibility.NBC,
-                    "add a new when/must, it's non-backward-compatible.");
-        } else if (changeInfo == CompatibilityRule.ChangeInfo.CHANGED) {
-            return new CompatibilityInfo(CompatibilityRule.Compatibility.UNKNOWN,
-                    "change a when/must, the compatibility is unknown.");
+        if (changeInfo == CompatibilityRule.ChangeInfo.CHANGED) {
+            return new CompatibilityInfo(CompatibilityRule.Compatibility.NBC, "namespace MUST NOT be changed.");
         }
         return super.defaultCompatibility(left, right, changeInfo);
     }

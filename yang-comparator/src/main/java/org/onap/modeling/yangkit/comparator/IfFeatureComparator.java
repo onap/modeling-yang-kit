@@ -16,10 +16,10 @@ limitations under the License.
 
 package org.onap.modeling.yangkit.comparator;
 
-import org.yangcentral.yangkit.model.api.stmt.YangStatement;
+import org.yangcentral.yangkit.model.api.stmt.IfFeature;
 
-public class WhenMustComparator extends CommonYangStatementComparator {
 
+public class IfFeatureComparator extends CommonYangStatementComparator<IfFeature> {
     /**
      *
      * @param left       left statement
@@ -28,14 +28,14 @@ public class WhenMustComparator extends CommonYangStatementComparator {
      * @return
      */
     @Override
-    protected CompatibilityInfo defaultCompatibility(YangStatement left, YangStatement right,
+    protected CompatibilityInfo defaultCompatibility(IfFeature left, IfFeature right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {
         if (changeInfo == CompatibilityRule.ChangeInfo.ADDED) {
-            return new CompatibilityInfo(CompatibilityRule.Compatibility.NBC,
-                    "add a new when/must, it's non-backward-compatible.");
+            return new CompatibilityInfo(CompatibilityRule.Compatibility.NBC, "add a new if-feature,"
+                    + "it's non-backward-compatible.");
         } else if (changeInfo == CompatibilityRule.ChangeInfo.CHANGED) {
             return new CompatibilityInfo(CompatibilityRule.Compatibility.UNKNOWN,
-                    "change a when/must, the compatibility is unknown.");
+                    "if-feature is changed, it's compatibility is unknown.");
         }
         return super.defaultCompatibility(left, right, changeInfo);
     }
