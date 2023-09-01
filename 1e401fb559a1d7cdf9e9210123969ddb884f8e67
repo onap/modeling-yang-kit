@@ -1,0 +1,8 @@
+Code-Review+2: guanyu zhu <zhuguanyu5@huawei.com>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Submitted-by: guanyu zhu <zhuguanyu5@huawei.com>
+Submitted-at: Fri, 01 Sep 2023 09:37:07 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/modeling/yang-kit/+/135896
+Project: modeling/yang-kit
+Branch: refs/heads/master
