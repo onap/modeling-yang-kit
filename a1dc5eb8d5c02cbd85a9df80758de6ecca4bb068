@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c3033c0_7a4b42ff",
+        "filename": "yang-comparator/src/main/java/org/onap/modeling/yangkit/comparator/AbstractYangStatementComparator.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 8117
+      },
+      "writtenOn": "2023-09-01T09:36:52Z",
+      "side": 1,
+      "message": "Maybe delete the redundant tag.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 3
+      },
+      "revId": "a1dc5eb8d5c02cbd85a9df80758de6ecca4bb068",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
