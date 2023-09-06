@@ -29,11 +29,11 @@ plugin to extend customized functions.
 
 ### &emsp;Obtain code
 ```
-# git clone https://github.com/yang-central/yang-compiler.git
+# git clone "https://gerrit.onap.org/r/a/modeling/yang-kit"
 ```
 ### &emsp;Build code
 ```
-# cd yang-compiler
+# cd yangkit/yang-compiler
 # mvn clean install
 ```
 &emsp;it will generate yang-compiler-1.0-SNAPSHOT.jar and libs directory under the directory target.
