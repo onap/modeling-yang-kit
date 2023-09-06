@@ -370,6 +370,12 @@ public class CommonYangStatementComparator<T extends YangStatement> extends Abst
      * @return true or false
      */
     public static boolean yangStatementIsEqual(YangStatement left, YangStatement right) {
+        if ((null == left) || (null == right)) {
+            if ((null == left) && (null == right)) {
+                return true;
+            }
+            return false;
+        }
         if ((left instanceof SchemaNode) && (right instanceof SchemaNode)) {
             SchemaNode leftSchemaNode = (SchemaNode) left;
             SchemaNode rightSchemaNode = (SchemaNode) right;

@@ -32,7 +32,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.onap.modeling.yangkit.plugin.YangCompilerPlugin;
+import org.onap.modeling.yangkit.compiler.plugin.YangCompilerPlugin;
 
 
 @SuppressWarnings("ALL")

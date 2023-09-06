@@ -1,0 +1,60 @@
+{
+  "plugins": {
+    "plugin": [
+      {
+        "name": "schema_validator",
+        "class-path": "",
+        "class": "org.yangcentral.yangkit.compiler.plugin.validator.YangValidator",
+        "description": "a plugin for validating yang files",
+        "parameter": [
+          {
+            "name": "output",
+            "description": "the output directory."
+          }
+        ]
+      },
+      {
+        "name": "yang_statistics",
+        "class-path": "",
+        "class": "org.yangcentral.yangkit.compiler.plugin.stat.YangStatistics",
+        "description": "a plugin for retrieving yang statistics",
+        "parameter": [
+          {
+            "name": "output",
+            "description": "the output file."
+          }
+        ]
+      },
+      {
+        "name": "yangtree_generator",
+        "class": "org.yangcentral.yangkit.compiler.plugin.yangtree.YangTreeGenerator",
+        "description": "a plugin for generating yang tree",
+        "parameter": [
+          {
+            "name": "output",
+            "description": "the output directory for generated yang tree."
+          },
+          {
+            "name": "line-length",
+            "description": "integer,default is 72, a line max length."
+          },
+          {
+            "name": "expand-grouping",
+            "description": "boolean,default is true,indicate whether expand grouping"
+          }
+        ]
+      },
+      {
+        "name": "yangpackage_generator",
+        "class": "org.yangcentral.yangkit.compiler.plugin.yangpackage.YangPackageGenerator",
+        "description": "a plugin for generating yang package",
+        "parameter": [
+          {
+            "name": "output",
+            "description": "string, the file name(include parent path) of yang package instance."
+          }
+        ]
+      }
+    ]
+  }
+}

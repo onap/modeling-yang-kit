@@ -27,14 +27,15 @@ import java.net.URI;
 public class ModuleInfo {
     private final String name;
     private final String revision;
-    private final String organization;
+    private String organization;
     private URI schema;
 
     /**
      * The constructor of ModuleInfo.
-     * @param name module name
-     * @param revision module revision
-     * @param organization  the organization who publish this module
+     *
+     * @param name         module name
+     * @param revision     module revision
+     * @param organization the organization who publish this module
      */
     public ModuleInfo(String name, String revision, String organization) {
         this.name = name;
@@ -42,16 +43,18 @@ public class ModuleInfo {
         this.organization = organization;
     }
 
-    /**
-     *  set schema.
-     * @param schema the URI of schema
-     */
+    public ModuleInfo(String name, String revision) {
+        this.name = name;
+        this.revision = revision;
+    }
+
     public void setSchema(URI schema) {
         this.schema = schema;
     }
 
     /**
      * get module name.
+     *
      * @return module name
      */
     public String getName() {
@@ -60,6 +63,7 @@ public class ModuleInfo {
 
     /**
      * get module's revision.
+     *
      * @return revision
      */
     public String getRevision() {
@@ -68,6 +72,7 @@ public class ModuleInfo {
 
     /**
      * get organization.
+     *
      * @return organization
      */
     public String getOrganization() {
@@ -76,6 +81,7 @@ public class ModuleInfo {
 
     /**
      * get schema.
+     *
      * @return URI
      */
     public URI getSchema() {
@@ -83,7 +89,30 @@ public class ModuleInfo {
     }
 
     /**
+     * whether this module info with revision.
+     * @return true or false
+     */
+    public boolean withRevision() {
+        if (revision != null && !revision.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * get the module information string.
+     * @return module information
+     */
+    public String getModuleInfo() {
+        if (withRevision()) {
+            return name + "@" + revision;
+        }
+        return name;
+    }
+
+    /**
      * parse module info from json.
+     *
      * @param element json element
      * @return ModuleInfo
      */
@@ -101,16 +130,17 @@ public class ModuleInfo {
             return null;
         }
         URI schema = URI.create(schemaElement.getAsString());
-        if (name == null || revision == null) {
+        if (name == null || revision == null || schema == null) {
             return null;
         }
-        ModuleInfo moduleInfo = new ModuleInfo(name,revision,organization);
+        ModuleInfo moduleInfo = new ModuleInfo(name, revision, organization);
         moduleInfo.setSchema(schema);
         return moduleInfo;
     }
 
     /**
      * parse module information from json string.
+     *
      * @param str json string
      * @return Module information
      */
