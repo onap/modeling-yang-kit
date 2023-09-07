@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "081c5a2c_d697bd9d",
+        "filename": "yang-compiler/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 8117
+      },
+      "writtenOn": "2023-09-07T01:40:19Z",
+      "side": 1,
+      "message": "放GitHub的链接不是很合适，我们的readme可以后面再写。",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 61
+      },
+      "revId": "47ef15fef5cdd02f99ce1546c557fe8c74591d46",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae10a51c_dd8fe4d1",
+        "filename": "yang-compiler/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 8117
+      },
+      "writtenOn": "2023-09-07T01:40:19Z",
+      "side": 1,
+      "message": "这个依赖对吗",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 62
+      },
+      "revId": "47ef15fef5cdd02f99ce1546c557fe8c74591d46",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
