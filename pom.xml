@@ -13,6 +13,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>yang-compiler</module>
+        <module>yang-comparator</module>
     </modules>
     <packaging>pom</packaging>
     <name>yangkit</name>

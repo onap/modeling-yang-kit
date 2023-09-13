@@ -28,11 +28,6 @@ import org.yangcentral.yangkit.model.api.stmt.YangStatement;
 
 public class OperationComparator extends SchemaNodeComparator<Operation> {
 
-    /**
-     *
-     * @param schemaNodeContainer
-     * @return
-     */
     private boolean hasActiveSchemaChildren(SchemaNodeContainer schemaNodeContainer) {
         for (SchemaNode schemaNode : schemaNodeContainer.getSchemaNodeChildren()) {
             if (schemaNode.isActive()) {
@@ -42,12 +37,7 @@ public class OperationComparator extends SchemaNodeComparator<Operation> {
         return false;
     }
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @return
-     */
+
     @Override
     protected List<YangCompareResult> compareChildren(Operation left, Operation right) {
         List<YangCompareResult> compareResults = new ArrayList<>();

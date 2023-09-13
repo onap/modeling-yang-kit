@@ -25,12 +25,7 @@ import org.yangcentral.yangkit.model.api.stmt.YangStatement;
 
 public class UniqueComparator extends CommonYangStatementComparator<Unique> {
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @return
-     */
+
     @Override
     protected List<CompatibilityRule.ChangeInfo> getChangeInfo(Unique left, Unique right) {
         List<CompatibilityRule.ChangeInfo> changeInfos = new ArrayList<>();
@@ -85,13 +80,7 @@ public class UniqueComparator extends CommonYangStatementComparator<Unique> {
         return changeInfos;
     }
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @param changeInfo
-     * @return
-     */
+
     @Override
     protected CompatibilityInfo defaultCompatibility(Unique left, Unique right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {

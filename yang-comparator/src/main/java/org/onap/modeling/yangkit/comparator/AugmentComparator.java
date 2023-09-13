@@ -24,10 +24,10 @@ import org.yangcentral.yangkit.model.api.stmt.Augment;
 public class AugmentComparator extends SchemaNodeComparator<Augment> {
 
     /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @return
+     * compare the left and right statement.
+     * @param left  left statement
+     * @param right right statement
+     * @return list of compare result
      */
     @Override
     public List<YangCompareResult> compare(Augment left, Augment right) {

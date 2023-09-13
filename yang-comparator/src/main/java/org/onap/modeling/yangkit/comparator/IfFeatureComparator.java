@@ -21,11 +21,11 @@ import org.yangcentral.yangkit.model.api.stmt.IfFeature;
 
 public class IfFeatureComparator extends CommonYangStatementComparator<IfFeature> {
     /**
-     *
+     * get default compatibility.
      * @param left       left statement
      * @param right      right statement
-     * @param changeInfo
-     * @return
+     * @param changeInfo change information.
+     * @return default compatibility
      */
     @Override
     protected CompatibilityInfo defaultCompatibility(IfFeature left, IfFeature right,

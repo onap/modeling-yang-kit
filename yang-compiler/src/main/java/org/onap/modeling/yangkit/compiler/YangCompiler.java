@@ -126,10 +126,7 @@ public class YangCompiler {
     public YangSchemaContext buildSchemaContext() {
         YangSchemaContext schemaContext = null;
         try {
-            List<Source> sources = buildOption.getSources();
-            for (Source source : sources) {
-                schemaContext = source.buildSource(settings, schemaContext, true);
-            }
+            schemaContext = YangCompilerUtil.buildSchemaContext(buildOption.getSources(),getSettings());
 
             return schemaContext;
         } catch (YangCompilerException e) {

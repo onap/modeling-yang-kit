@@ -26,10 +26,10 @@ import org.yangcentral.yangkit.model.api.stmt.SchemaNode;
 
 public class ConfigComparator extends CommonYangStatementComparator<Config> {
     /**
-     *
+     * get the change information.
      * @param left       left statement
      * @param right      right statement
-     * @return
+     * @return list of change information
      */
     @Override
     protected List<CompatibilityRule.ChangeInfo> getChangeInfo(Config left, Config right) {
@@ -60,11 +60,11 @@ public class ConfigComparator extends CommonYangStatementComparator<Config> {
     }
 
     /**
-     *
+     * get the default compatibility.
      * @param left       left statement
      * @param right      right statement
-     * @param changeInfo
-     * @return
+     * @param changeInfo change information
+     * @return  default compatibility
      */
     @Override
     protected CompatibilityInfo defaultCompatibility(Config left, Config right,

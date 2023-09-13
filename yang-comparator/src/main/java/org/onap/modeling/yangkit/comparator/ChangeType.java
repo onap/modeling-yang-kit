@@ -25,16 +25,16 @@ public enum ChangeType {
     private String description;
 
     /**
-     *
-     * @param description
+     * the constructor (private).
+     * @param description description
      */
     private ChangeType(String description) {
         this.description = description;
     }
 
     /**
-     *
-     * @return
+     * get the name.
+     * @return the name
      */
     public String getName() {
         return this.description;

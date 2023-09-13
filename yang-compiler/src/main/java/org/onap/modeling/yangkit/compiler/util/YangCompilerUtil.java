@@ -46,11 +46,14 @@ import javax.net.ssl.X509TrustManager;
 import org.onap.modeling.yangkit.catalog.ModuleInfo;
 import org.onap.modeling.yangkit.catalog.YangCatalog;
 import org.onap.modeling.yangkit.compiler.Settings;
+import org.onap.modeling.yangkit.compiler.Source;
+import org.onap.modeling.yangkit.compiler.YangCompilerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yangcentral.yangkit.base.YangBuiltinKeyword;
 
 
+import org.yangcentral.yangkit.model.api.schema.YangSchemaContext;
 import org.yangcentral.yangkit.model.api.stmt.Module;
 import org.yangcentral.yangkit.model.api.stmt.SubModule;
 import org.yangcentral.yangkit.model.api.stmt.YangStatement;
@@ -437,5 +440,23 @@ public class YangCompilerUtil {
             dependencies.add(moduleInfo);
         }
         return dependencies;
+    }
+
+    /**
+     * build schema context from sources and settings.
+     * @param sources yang sources
+     * @param settings settings
+     * @return yang schema context
+     * @throws YangCompilerException yang compiler exception
+     */
+    public static YangSchemaContext buildSchemaContext(List<Source> sources, Settings settings)
+            throws YangCompilerException {
+        YangSchemaContext schemaContext = null;
+
+        for (Source source : sources) {
+            schemaContext = source.buildSource(settings, schemaContext, true);
+        }
+        return schemaContext;
+
     }
 }

@@ -24,12 +24,7 @@ import org.yangcentral.yangkit.model.api.stmt.type.SectionExpression;
 
 public class RangeLengthComparator extends CommonYangStatementComparator<SectionExpression> {
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @return
-     */
+
     @Override
     protected List<CompatibilityRule.ChangeInfo> getChangeInfo(SectionExpression left, SectionExpression right) {
         List<CompatibilityRule.ChangeInfo> changeInfos = new ArrayList<>();
@@ -48,13 +43,7 @@ public class RangeLengthComparator extends CommonYangStatementComparator<Section
         return changeInfos;
     }
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @param changeInfo
-     * @return
-     */
+
     @Override
     protected CompatibilityInfo defaultCompatibility(SectionExpression left, SectionExpression right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {

@@ -22,11 +22,11 @@ import org.yangcentral.yangkit.model.api.stmt.YangStatement;
 public class EnumBitComparator extends CommonYangStatementComparator {
 
     /**
-     *
+     * get default compatibility.
      * @param left       left statement
      * @param right      right statement
-     * @param changeInfo
-     * @return
+     * @param changeInfo change information.
+     * @return default compatibility
      */
     @Override
     protected CompatibilityInfo defaultCompatibility(YangStatement left, YangStatement right,

@@ -91,12 +91,7 @@ public class CompatibilityRules {
         }
     }
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @return
-     */
+
     private boolean matchCondition(CompatibilityRule left, CompatibilityRule.ChangeInfo right) {
         if (left.getCondition() == CompatibilityRule.ChangeInfo.ANY) {
             return true;

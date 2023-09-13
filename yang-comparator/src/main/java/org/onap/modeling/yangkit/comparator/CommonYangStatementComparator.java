@@ -36,10 +36,10 @@ public class CommonYangStatementComparator<T extends YangStatement> extends Abst
     public static final int OPTION_ALL = 3;
 
     /**
-     *
+     * get then change information between left and right statements.
      * @param left       left statement
      * @param right      right statement
-     * @return
+     * @return the change information
      */
     @Override
     protected List<CompatibilityRule.ChangeInfo> getChangeInfo(T left, T right) {
@@ -65,11 +65,7 @@ public class CommonYangStatementComparator<T extends YangStatement> extends Abst
         return changeInfos;
     }
 
-    /**
-     *
-     * @param stmt
-     * @return
-     */
+
     private int getIndex(T stmt) {
         YangStatement parentStmt = stmt.getParentStatement();
         if (null == parentStmt) {
@@ -89,9 +85,9 @@ public class CommonYangStatementComparator<T extends YangStatement> extends Abst
     }
 
     /**
-     *
-     * @param changeInfo
-     * @return
+     * get the change type from change information.
+     * @param changeInfo change information
+     * @return change type
      */
     protected ChangeType getChangeType(CompatibilityRule.ChangeInfo changeInfo) {
         switch (changeInfo) {
@@ -110,11 +106,11 @@ public class CommonYangStatementComparator<T extends YangStatement> extends Abst
 
 
     /**
-     *
+     * get the default compatibility.
      * @param left       left statement
      * @param right      right statement
-     * @param changeInfo
-     * @return
+     * @param changeInfo change information
+     * @return default compatibility
      */
     @Override
     protected CompatibilityInfo defaultCompatibility(T left, T right, CompatibilityRule.ChangeInfo changeInfo) {
@@ -147,10 +143,10 @@ public class CommonYangStatementComparator<T extends YangStatement> extends Abst
     }
 
     /**
-     *
+     * compare the children of left and right statements.
      * @param left       left statement
      * @param right      right statement
-     * @return
+     * @return list of compare result
      */
     protected List<YangCompareResult> compareChildren(T left, T right) {
         List<YangCompareResult> compareResults =
@@ -160,10 +156,10 @@ public class CommonYangStatementComparator<T extends YangStatement> extends Abst
     }
 
     /**
-     *
+     * compare the left and right statements.
      * @param left       left statement
      * @param right      right statement
-     * @return
+     * @return list compare result
      */
     @Override
     public List<YangCompareResult> compare(T left, T right) {

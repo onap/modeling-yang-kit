@@ -25,24 +25,13 @@ import org.yangcentral.yangkit.model.api.stmt.Module;
 
 public class ModuleComparator extends CommonYangStatementComparator<Module> {
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @return
-     */
+
     @Override
     protected List<CompatibilityRule.ChangeInfo> getChangeInfo(Module left, Module right) {
         return super.getChangeInfo(left, right);
     }
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @param changeInfo
-     * @return
-     */
+
     @Override
     protected CompatibilityInfo defaultCompatibility(Module left, Module right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {
@@ -54,12 +43,7 @@ public class ModuleComparator extends CommonYangStatementComparator<Module> {
         return super.defaultCompatibility(left, right, changeInfo);
     }
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @return
-     */
+
     @Override
     protected List<YangCompareResult> compareChildren(Module left, Module right) {
         List<YangCompareResult> results = new ArrayList<>();

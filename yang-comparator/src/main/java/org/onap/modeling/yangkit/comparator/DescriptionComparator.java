@@ -22,11 +22,11 @@ import org.yangcentral.yangkit.model.api.stmt.Description;
 public class DescriptionComparator extends CommonYangStatementComparator<Description> {
 
     /**
-     *
+     * get default compatibility.
      * @param left       left statement
      * @param right      right statement
-     * @param changeInfo
-     * @return
+     * @param changeInfo change information.
+     * @return default compatibility
      */
     @Override
     protected CompatibilityInfo defaultCompatibility(Description left, Description right,

@@ -21,13 +21,7 @@ import org.yangcentral.yangkit.model.api.stmt.Namespace;
 
 public class NamespaceComparator extends CommonYangStatementComparator<Namespace> {
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @param changeInfo
-     * @return
-     */
+
     @Override
     protected CompatibilityInfo defaultCompatibility(Namespace left, Namespace right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {

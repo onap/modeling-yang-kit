@@ -21,13 +21,7 @@ import org.yangcentral.yangkit.model.api.stmt.Units;
 
 public class UnitsComparator extends CommonYangStatementComparator<Units> {
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @param changeInfo
-     * @return
-     */
+
     @Override
     protected CompatibilityInfo defaultCompatibility(Units left, Units right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {

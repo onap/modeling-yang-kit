@@ -24,10 +24,10 @@ import org.yangcentral.yangkit.model.api.stmt.Mandatory;
 public class MandatoryComparator extends CommonYangStatementComparator<Mandatory> {
 
     /**
-     *
+     * get the change information.
      * @param left       left statement
      * @param right      right statement
-     * @return
+     * @return list of change information
      */
     @Override
     protected List<CompatibilityRule.ChangeInfo> getChangeInfo(Mandatory left, Mandatory right) {
@@ -45,11 +45,11 @@ public class MandatoryComparator extends CommonYangStatementComparator<Mandatory
     }
 
     /**
-     *
+     * get default compatibility.
      * @param left       left statement
      * @param right      right statement
-     * @param changeInfo
-     * @return
+     * @param changeInfo change information.
+     * @return default compatibility
      */
     @Override
     protected CompatibilityInfo defaultCompatibility(Mandatory left, Mandatory right,

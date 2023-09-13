@@ -25,12 +25,7 @@ import org.yangcentral.yangkit.model.api.stmt.SchemaNodeContainer;
 
 
 public class SchemaNodeComparator<T extends SchemaNode> extends CommonYangStatementComparator<T> {
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @return
-     */
+
     @Override
     protected List<CompatibilityRule.ChangeInfo> getChangeInfo(T left, T right) {
         List<CompatibilityRule.ChangeInfo> changeInfos = new ArrayList<>();
@@ -48,13 +43,6 @@ public class SchemaNodeComparator<T extends SchemaNode> extends CommonYangStatem
         return changeInfos;
     }
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @param changeInfo
-     * @return
-     */
     @Override
     protected CompatibilityInfo defaultCompatibility(T left, T right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {
@@ -66,12 +54,7 @@ public class SchemaNodeComparator<T extends SchemaNode> extends CommonYangStatem
     }
 
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @return
-     */
+
     @Override
     protected List<YangCompareResult> compareChildren(T left, T right) {
         List<YangCompareResult> results = new ArrayList<>();
@@ -92,12 +75,7 @@ public class SchemaNodeComparator<T extends SchemaNode> extends CommonYangStatem
         return results;
     }
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @return
-     */
+
     @Override
     public List<YangCompareResult> compare(T left, T right) {
         List<YangCompareResult> compareResults = new ArrayList<>();

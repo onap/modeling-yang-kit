@@ -24,12 +24,7 @@ import org.yangcentral.yangkit.model.api.stmt.MinElements;
 
 public class MinElementsComparator extends CommonYangStatementComparator<MinElements> {
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @return
-     */
+
     @Override
     protected List<CompatibilityRule.ChangeInfo> getChangeInfo(MinElements left, MinElements right) {
         List<CompatibilityRule.ChangeInfo> changeInfos = new ArrayList<>();
@@ -44,13 +39,7 @@ public class MinElementsComparator extends CommonYangStatementComparator<MinElem
         return changeInfos;
     }
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @param changeInfo
-     * @return
-     */
+
     @Override
     protected CompatibilityInfo defaultCompatibility(MinElements left, MinElements right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {

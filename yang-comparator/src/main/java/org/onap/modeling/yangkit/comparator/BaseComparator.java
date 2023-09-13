@@ -24,11 +24,11 @@ import org.yangcentral.yangkit.model.api.stmt.Type;
 public class BaseComparator extends CommonYangStatementComparator<Base> {
 
     /**
-     *
+     * get the default compatibility from left and right base statements.
      * @param left       left statement
      * @param right      right statement
-     * @param changeInfo
-     * @return
+     * @param changeInfo the change information
+     * @return default compatibility information
      */
     @Override
     protected CompatibilityInfo defaultCompatibility(Base left, Base right,

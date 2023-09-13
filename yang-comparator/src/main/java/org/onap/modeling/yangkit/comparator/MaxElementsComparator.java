@@ -25,10 +25,10 @@ import org.yangcentral.yangkit.model.api.stmt.MaxElements;
 public class MaxElementsComparator extends CommonYangStatementComparator<MaxElements> {
 
     /**
-     *
+     * get the change information.
      * @param left       left statement
      * @param right      right statement
-     * @return
+     * @return list of change information
      */
     @Override
     protected List<CompatibilityRule.ChangeInfo> getChangeInfo(MaxElements left, MaxElements right) {
@@ -51,11 +51,11 @@ public class MaxElementsComparator extends CommonYangStatementComparator<MaxElem
     }
 
     /**
-     *
+     * get default compatibility.
      * @param left       left statement
      * @param right      right statement
-     * @param changeInfo
-     * @return
+     * @param changeInfo change information.
+     * @return default compatibility
      */
     @Override
     protected CompatibilityInfo defaultCompatibility(MaxElements left, MaxElements right,

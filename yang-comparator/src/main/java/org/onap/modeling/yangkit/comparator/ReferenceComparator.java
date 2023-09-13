@@ -21,13 +21,6 @@ import org.yangcentral.yangkit.model.api.stmt.Reference;
 
 public class ReferenceComparator extends CommonYangStatementComparator<Reference> {
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @param changeInfo
-     * @return
-     */
     @Override
     protected CompatibilityInfo defaultCompatibility(Reference left, Reference right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {

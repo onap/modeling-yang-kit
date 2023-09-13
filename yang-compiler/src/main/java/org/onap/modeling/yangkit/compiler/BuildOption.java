@@ -95,6 +95,65 @@ public class BuildOption {
     }
 
     /**
+     * parse the sources.
+     * @param yangElement yang element
+     * @return list of sources
+     */
+    public static List<Source> parseSources(JsonElement yangElement) {
+        List<Source> sources = new ArrayList<>();
+        JsonObject yang = yangElement.getAsJsonObject();
+        JsonElement dirElement = yang.get("dir");
+        if (dirElement != null) {
+            JsonArray dirArray = dirElement.getAsJsonArray();
+            List<JsonElement> dirElementList = dirArray.asList();
+            List<String> dirs = new ArrayList<>();
+            for (JsonElement dirElementItem : dirElementList) {
+                String yangDir = dirElementItem.getAsString();
+                dirs.add(yangDir);
+            }
+            DirectorySource directorySource = new DirectorySource(dirs);
+            sources.add(directorySource);
+        }
+        JsonElement filesElement = yang.get("file");
+        if (filesElement != null) {
+            JsonArray fileArray = filesElement.getAsJsonArray();
+            List<JsonElement> fileElementList = fileArray.asList();
+            List<String> files = new ArrayList<>();
+            for (JsonElement fileElementItem : fileElementList) {
+                String yangFile = fileElementItem.getAsString();
+                files.add(yangFile);
+            }
+            FileSource fileSource = new FileSource(files);
+            sources.add(fileSource);
+        }
+        JsonElement modulesElement = yang.get("module");
+        if (modulesElement != null) {
+            JsonArray moduleArray = modulesElement.getAsJsonArray();
+            List<JsonElement> moduleList = moduleArray.asList();
+            List<ModuleInfo> moduleInfos = new ArrayList<>();
+            for (JsonElement moduleElement : moduleList) {
+                JsonObject moduleObject = moduleElement.getAsJsonObject();
+                String name = moduleObject.get("name").getAsString();
+                String revision = moduleObject.get("revision").getAsString();
+                String organization = null;
+                if (moduleObject.get("organization") != null) {
+                    organization = moduleObject.get("organization").getAsString();
+                }
+                URI schema = null;
+                if (moduleObject.get("schema") != null) {
+                    schema = URI.create(moduleObject.get("schema").getAsString());
+                }
+                ModuleInfo moduleInfo = new ModuleInfo(name, revision, organization);
+                moduleInfo.setSchema(schema);
+                moduleInfos.add(moduleInfo);
+            }
+            ModuleSource moduleSource = new ModuleSource(moduleInfos);
+            sources.add(moduleSource);
+        }
+        return sources;
+    }
+
+    /**
      * parse the build.json.
      *
      * @param jsonElement json element
@@ -106,55 +165,7 @@ public class BuildOption {
 
         JsonElement yangElement = jsonObject.get("yang");
         if (yangElement != null) {
-            JsonObject yang = yangElement.getAsJsonObject();
-            JsonElement dirElement = yang.get("dir");
-            if (dirElement != null) {
-                JsonArray dirArray = dirElement.getAsJsonArray();
-                List<JsonElement> dirElementList = dirArray.asList();
-                List<String> dirs = new ArrayList<>();
-                for (JsonElement dirElementItem : dirElementList) {
-                    String yangDir = dirElementItem.getAsString();
-                    dirs.add(yangDir);
-                }
-                DirectorySource directorySource = new DirectorySource(dirs);
-                buildOption.addSource(directorySource);
-            }
-            JsonElement filesElement = yang.get("file");
-            if (filesElement != null) {
-                JsonArray fileArray = filesElement.getAsJsonArray();
-                List<JsonElement> fileElementList = fileArray.asList();
-                List<String> files = new ArrayList<>();
-                for (JsonElement fileElementItem : fileElementList) {
-                    String yangFile = fileElementItem.getAsString();
-                    files.add(yangFile);
-                }
-                FileSource fileSource = new FileSource(files);
-                buildOption.addSource(fileSource);
-            }
-            JsonElement modulesElement = yang.get("module");
-            if (modulesElement != null) {
-                JsonArray moduleArray = modulesElement.getAsJsonArray();
-                List<JsonElement> moduleList = moduleArray.asList();
-                List<ModuleInfo> moduleInfos = new ArrayList<>();
-                for (JsonElement moduleElement : moduleList) {
-                    JsonObject moduleObject = moduleElement.getAsJsonObject();
-                    String name = moduleObject.get("name").getAsString();
-                    String revision = moduleObject.get("revision").getAsString();
-                    String organization = null;
-                    if (moduleObject.get("organization") != null) {
-                        organization = moduleObject.get("organization").getAsString();
-                    }
-                    URI schema = null;
-                    if (moduleObject.get("schema") != null) {
-                        schema = URI.create(moduleObject.get("schema").getAsString());
-                    }
-                    ModuleInfo moduleInfo = new ModuleInfo(name, revision, organization);
-                    moduleInfo.setSchema(schema);
-                    moduleInfos.add(moduleInfo);
-                }
-                ModuleSource moduleSource = new ModuleSource(moduleInfos);
-                buildOption.addSource(moduleSource);
-            }
+            buildOption.sources = parseSources(yangElement);
         }
         JsonElement settingsElement = jsonObject.get("settings");
         if (settingsElement != null) {

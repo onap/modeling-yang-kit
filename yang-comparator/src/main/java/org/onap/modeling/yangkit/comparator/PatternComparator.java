@@ -21,13 +21,7 @@ import org.yangcentral.yangkit.model.api.stmt.type.Pattern;
 
 public class PatternComparator extends CommonYangStatementComparator<Pattern> {
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @param changeInfo
-     * @return
-     */
+
     @Override
     protected CompatibilityInfo defaultCompatibility(Pattern left, Pattern right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {

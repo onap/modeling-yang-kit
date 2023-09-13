@@ -20,13 +20,7 @@ import org.yangcentral.yangkit.model.api.stmt.YangStatement;
 
 public class WhenMustComparator extends CommonYangStatementComparator {
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @param changeInfo
-     * @return
-     */
+
     @Override
     protected CompatibilityInfo defaultCompatibility(YangStatement left, YangStatement right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {

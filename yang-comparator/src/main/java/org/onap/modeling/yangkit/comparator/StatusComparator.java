@@ -26,12 +26,6 @@ import org.yangcentral.yangkit.model.api.stmt.StatusStmt;
 
 public class StatusComparator extends CommonYangStatementComparator<StatusStmt> {
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @return
-     */
     @Override
     protected List<CompatibilityRule.ChangeInfo> getChangeInfo(StatusStmt left, StatusStmt right) {
         List<CompatibilityRule.ChangeInfo> changeInfos = new ArrayList<>();
@@ -52,13 +46,7 @@ public class StatusComparator extends CommonYangStatementComparator<StatusStmt> 
     }
 
 
-    /**
-     *
-     * @param left       left statement
-     * @param right      right statement
-     * @param changeInfo
-     * @return
-     */
+
     @Override
     protected CompatibilityInfo defaultCompatibility(StatusStmt left, StatusStmt right,
                                                      CompatibilityRule.ChangeInfo changeInfo) {
