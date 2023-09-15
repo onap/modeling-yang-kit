@@ -142,7 +142,7 @@ The plugin system of Yang compiler support built-in plugin and external plugin. 
    
                     "name": "validator_plugin",
 
-                    "class": "org.yangcentral.yangkit.compiler.plugin.validator.YangValidator",
+                    "class": "org.onap.modelling.yangkit.compiler.plugin.validator.YangValidator",
    
                     "description": "a plugin for validating yang files",
    
@@ -179,12 +179,12 @@ The plugin system of Yang compiler support built-in plugin and external plugin. 
       {
         "name": "yang_comparator",
         "class-path": "yang-comparator/yang-comparator-1.0-SNAPSHOT.jar",
-        "class": "com.huawei.yang.comparator.YangComparatorPlugin",
+        "class": "org.onap.modelling.yangkit.comparator.app.YangComparatorPlugin",
         "description": "a plugin for comparing two yang schema.",
         "parameter": [
           {
             "name": "old-yang",
-            "description": "mandatory,the old version yang directory."
+            "description": "mandatory,the old version yang sources."
           },
           {
             "name": "settings",
@@ -307,7 +307,7 @@ The plugin system of Yang compiler support built-in plugin and external plugin. 
  ```
 ### &emsp;Commandline
 ```
-# java -jar yang-compiler-1.0-SNAPSHOT.jar [option=<_build.json_>]  [install]
+# java -jar yang-compiler-1.0.0-SNAPSHOT.jar [option=<_build.json_>]  [install]
 ```
 #### &emsp;&emsp;Parameters
 1. option: optional, specify the build option. It's the path of build.json, if not present, the build.json in current directory will be used.

@@ -1,22 +1,7 @@
 {
   "yang": {
-    "module": [
-      {
-        "name": "ietf-interfaces",
-        "revision": ""
-      },
-      {
-        "name": "huawei-ifm",
-        "revision": "2022-08-06"
-      },
-      {
-        "name": "huawei-bgp",
-        "revision": ""
-      },
-      {
-        "name": "huawei-network-instance",
-        "revision": ""
-      }
+    "dir" : [
+      "C:\\Users\\Administrator\\IdeaProjects\\huawei-yang\\network-router\\8.21.0\\atn-980b"
     ]
   },
   "plugin": [
@@ -30,6 +15,27 @@
         {
           "name": "expand-grouping",
           "value": "true"
+        }
+      ]
+    },
+    {
+      "name": "yang_comparator",
+      "parameter": [
+        {
+          "name": "old-yang",
+          "value": {
+            "dir" : [
+              "C:\\Users\\Administrator\\IdeaProjects\\huawei-yang\\network-router\\8.20.0\\atn980b"
+            ]
+          }
+        },
+        {
+          "name": "compare-type",
+          "value": "stmt"
+        },
+        {
+          "name" : "result",
+          "value" : "out/diff_stmt.xml"
         }
       ]
     },

@@ -64,12 +64,10 @@ public class YangCompilerRunner {
                 .toURI());
         File pluginsDir = new File(programDir.getParentFile(), "plugins");
         if (!pluginsDir.exists()) {
-            System.out.println("[WARNING]plugins dir:" + pluginsDir.getAbsolutePath() + " is not exists");
             return;
         }
         File pluginsFile = new File(pluginsDir, "plugins.json");
         if (pluginsFile.exists()) {
-            System.out.println("[INFO]reading the information of plugins from:" + pluginsFile.getAbsolutePath());
             List<PluginInfo> pluginInfos = parsePlugins(pluginsFile, FileUtil.readFile2String(pluginsFile));
             for (PluginInfo pluginInfo : pluginInfos) {
                 yangCompiler.addPluginInfo(pluginInfo);

@@ -3,13 +3,13 @@
     "plugin": [
       {
         "name": "yang_comparator",
-        "class-path": "yang-comparator-1.0-SNAPSHOT.jar",
-        "class": "com.huawei.yang.comparator.app.YangComparatorPlugin",
+        "class-path": "yang-comparator/yang-comparator-1.0.0-SNAPSHOT.jar",
+        "class": "org.onap.modeling.yangkit.comparator.app.YangComparatorPlugin",
         "description": "a plugin for comparing two yang schema.",
         "parameter": [
           {
             "name": "old-yang",
-            "description": "mandatory,the old version yang directory."
+            "description": "mandatory,the old version yang sources."
           },
           {
             "name": "settings",

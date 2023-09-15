@@ -38,6 +38,8 @@ import org.onap.modeling.yangkit.compiler.plugin.YangCompilerPlugin;
 @SuppressWarnings("ALL")
 public class PluginInfo {
     private final String pluginName;
+
+    private  URLClassLoader classLoader;
     private final YangCompilerPlugin plugin;
 
     private String description;
@@ -61,6 +63,14 @@ public class PluginInfo {
      */
     public String getPluginName() {
         return pluginName;
+    }
+
+    public URLClassLoader getClassLoader() {
+        return classLoader;
+    }
+
+    public void setClassLoader(URLClassLoader classLoader) {
+        this.classLoader = classLoader;
     }
 
     /**
@@ -118,6 +128,7 @@ public class PluginInfo {
     public static PluginInfo parse(File pluginFile, JsonElement jsonElement) {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         String pluginName = jsonObject.get("name").getAsString();
+        URLClassLoader classLoader = null;
         String classPath = null;
         JsonElement classPathElement = jsonObject.get("class-path");
         if (classPathElement != null) {
@@ -139,11 +150,10 @@ public class PluginInfo {
                     return null;
                 }
                 URL[] cp = {file.toURI().toURL()};
-                try (URLClassLoader classLoader = new URLClassLoader(cp)) {
-                    pluginClass = (Class<? extends YangCompilerPlugin>) classLoader.loadClass(className);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+                classLoader = new URLClassLoader(cp);
+
+                pluginClass = (Class<? extends YangCompilerPlugin>) classLoader.loadClass(className);
+
             } else {
                 pluginClass = (Class<? extends YangCompilerPlugin>) Class.forName(className);
             }
@@ -151,6 +161,7 @@ public class PluginInfo {
             Constructor<? extends YangCompilerPlugin> constructor = pluginClass.getConstructor();
             YangCompilerPlugin yangCompilerPlugin = constructor.newInstance();
             PluginInfo pluginInfo = new PluginInfo(pluginName, yangCompilerPlugin);
+            pluginInfo.setClassLoader(classLoader);
             if (jsonObject.get("description") != null) {
                 String description = jsonObject.get("description").getAsString();
                 pluginInfo.setDescription(description);
@@ -184,5 +195,21 @@ public class PluginInfo {
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "PluginInfo{"
+                + "pluginName='"
+                + pluginName
+                + '\''
+                + ", plugin="
+                + plugin
+                + ", description='"
+                + description
+                + '\''
+                + ", parameters="
+                + parameters
+                + '}';
     }
 }

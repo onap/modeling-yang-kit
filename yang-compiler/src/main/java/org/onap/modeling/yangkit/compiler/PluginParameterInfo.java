@@ -56,4 +56,16 @@ public class PluginParameterInfo {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "PluginParameterInfo{"
+                + "name='"
+                + name
+                + '\''
+                + ", description='"
+                + description
+                + '\''
+                + '}';
+    }
 }

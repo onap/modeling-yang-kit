@@ -18,6 +18,7 @@ package org.onap.modeling.yangkit.comparator.app;
 
 import com.google.gson.JsonElement;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -47,44 +48,8 @@ import org.yangcentral.yangkit.utils.xml.XmlWriter;
  */
 public class YangComparatorPlugin implements YangCompilerPlugin {
     @Override
-    public YangCompilerPluginParameter getParameter(String name, JsonElement value)
-            throws YangCompilerException {
-        if (!name.equals("old-yang") && !name.equals("settings")
-                && !name.equals("compare-type") && !name.equals("rule")
-                && !name.equals("result")) {
-            throw new YangCompilerException("unrecognized parameter:" + name);
-        }
-        if (name.equals("old-yang") || name.equals("compare-type")) {
-            YangCompilerPluginParameter yangCompilerPluginParameter = new YangCompilerPluginParameter() {
-                @Override
-                public String getName() {
-                    return name;
-                }
-
-                @Override
-                public Object getValue() throws YangCompilerException {
-                    if (name.equals("old-yang")) {
-                        return BuildOption.parseSources(value);
-                    }
-
-                    if (name.equals("compare-type")) {
-                        if (value.equals("stmt")) {
-                            return CompareType.STMT;
-                        } else if (value.equals("tree")) {
-                            return CompareType.TREE;
-                        } else if (value.equals("compatible-check")) {
-                            return CompareType.COMPATIBLE_CHECK;
-                        }
-                        throw new YangCompilerException("unrecognized value:" + value);
-                    }
-                    return null;
-                }
-
-            };
-            return yangCompilerPluginParameter;
-        }
-        return YangCompilerPlugin.super.getParameter(name, value);
-
+    public YangCompilerPluginParameter getParameter(String name, JsonElement value) {
+        return new YangComparatorPluginParameter(name,value);
     }
 
     @Override
@@ -123,6 +88,17 @@ public class YangComparatorPlugin implements YangCompilerPlugin {
         }
         if (resultPath == null) {
             throw new YangCompilerException("missing mandatory parameter:result");
+        }
+        File outputFile = new File(resultPath);
+        if (!outputFile.exists()) {
+            if (outputFile.getParentFile() != null && !outputFile.getParentFile().exists()) {
+                outputFile.getParentFile().mkdirs();
+            }
+            try {
+                outputFile.createNewFile();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
         YangSchemaContext oldSchemaContext = YangCompilerUtil.buildSchemaContext(sources, settings);
         ValidatorResult oldResult = oldSchemaContext.validate();

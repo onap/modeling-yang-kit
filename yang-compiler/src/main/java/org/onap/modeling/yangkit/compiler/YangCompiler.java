@@ -17,7 +17,6 @@ limitations under the License.
 package org.onap.modeling.yangkit.compiler;
 
 
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -121,12 +120,13 @@ public class YangCompiler {
 
     /**
      * build schema context from build option.
+     *
      * @return yang schema context
      */
     public YangSchemaContext buildSchemaContext() {
         YangSchemaContext schemaContext = null;
         try {
-            schemaContext = YangCompilerUtil.buildSchemaContext(buildOption.getSources(),getSettings());
+            schemaContext = YangCompilerUtil.buildSchemaContext(buildOption.getSources(), getSettings());
 
             return schemaContext;
         } catch (YangCompilerException e) {
@@ -189,6 +189,12 @@ public class YangCompiler {
                 continue;
             }
             YangCompilerPlugin plugin = pluginInfo.getPlugin();
+            ClassLoader curClassLoader = Thread.currentThread().getContextClassLoader();
+            ClassLoader pluginClassLoader = curClassLoader;
+            if (pluginInfo.getClassLoader() != null) {
+                pluginClassLoader = pluginInfo.getClassLoader();
+                Thread.currentThread().setContextClassLoader(pluginClassLoader);
+            }
             try {
                 List<YangCompilerPluginParameter> parameters = new ArrayList<>();
                 if (!pluginBuilder.getParameters().isEmpty()) {
@@ -205,6 +211,9 @@ public class YangCompiler {
                 logger.info("ok.");
             } catch (YangCompilerException e) {
                 logger.error(e.getMessage());
+            }
+            if (pluginClassLoader != curClassLoader) {
+                Thread.currentThread().setContextClassLoader(curClassLoader);
             }
         }
         ValidatorResultBuilder validatorResultBuilder = new ValidatorResultBuilder();

@@ -396,7 +396,7 @@ public class YangTreeGenerator implements YangCompilerPlugin {
             SchemaNodeContainer parent = dataNode.getClosestAncestorNode();
             if (parent instanceof YangList) {
                 YangList list = (YangList) parent;
-                if (list.getKey().getKeyNode(dataNode.getIdentifier()) != null) {
+                if (list.getKey() != null && list.getKey().getKeyNode(dataNode.getIdentifier()) != null) {
                     return true;
                 }
             }
