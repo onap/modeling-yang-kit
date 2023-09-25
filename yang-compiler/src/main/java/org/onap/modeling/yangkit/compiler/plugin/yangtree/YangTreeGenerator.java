@@ -61,7 +61,7 @@ import org.yangcentral.yangkit.model.api.stmt.YangStatement;
 import org.yangcentral.yangkit.model.api.stmt.YangUnknown;
 import org.yangcentral.yangkit.model.api.stmt.ext.AugmentStructure;
 import org.yangcentral.yangkit.model.api.stmt.ext.YangData;
-import org.yangcentral.yangkit.model.api.stmt.ext.YangDataStructure;
+import org.yangcentral.yangkit.model.api.stmt.ext.YangStructure;
 import org.yangcentral.yangkit.utils.file.FileUtil;
 
 
@@ -100,7 +100,7 @@ public class YangTreeGenerator implements YangCompilerPlugin {
                 new QName("urn:ietf:params:xml:ns:yang:ietf-restconf", "yang-data"));
 
         // yang structure extension
-        List<YangUnknown> yangStructureList = module.getUnknowns(YangDataStructure.YANG_KEYWORD);
+        List<YangUnknown> yangStructureList = module.getUnknowns(YangStructure.YANG_KEYWORD);
 
         // augment structure extension
         List<YangUnknown> augmentStructureList = module.getUnknowns(AugmentStructure.YANG_KEYWORD);
@@ -180,7 +180,7 @@ public class YangTreeGenerator implements YangCompilerPlugin {
         //structures
         if (!yangStructureList.isEmpty()) {
             for (YangUnknown unknown : yangStructureList) {
-                YangDataStructure structure = (YangDataStructure) unknown;
+                YangStructure structure = (YangStructure) unknown;
                 sb.append(TWO_SPACES);
                 sb.append("structure");
                 sb.append(" ");
